@@ -73,6 +73,22 @@ std::vector<Cliente> Cliente::buscar_clientes_por_numero(const std::vector<Clien
   return resultados;
 }
 
+bool Cliente::tiene_tarjeta_credito() const {
+  if (tipo == "oro" || tipo == "black") {
+    return true;
+  }
+  return false;
+}
+
+double Cliente::obtener_limite_tarjeta_credito() const {
+  if (tipo == "oro") {
+    return 50000.0;
+  } else if (tipo == "black") {
+    return 250000.0;
+  }
+  return 0.0;
+}
+
 bool Cliente::verificar_antiguedad(const Cliente& cliente) {
   int anio_actual = 2023;
 
